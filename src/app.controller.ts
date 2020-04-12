@@ -19,7 +19,7 @@ export class AppController {
   @Post()
   addObserver(@Body() body: ObserverDTO): IObserver {
     const observerAdded: IObserver = this._observableService.subscribe(body);
-    this._observableService.notify('YUHU!!!'); // Immediatly notyting when a new observer is added
+    this._observableService.notify('YUHU!!!'); // Immediatly notyfying when a new observer is added
     return observerAdded;
   }
 }
