@@ -4,7 +4,7 @@ import { ObservableService } from './observer-pattern/observable/observable.serv
 import { ObserverDTO } from './observer-pattern/observable/DTOS/Observer.dto';
 import { IObserver } from './observer-pattern/observer/interfaces/IObserver';
 
-@Controller('observer-pattern')
+@Controller('')
 export class AppController {
   constructor(
     private readonly appService: AppService,
@@ -14,12 +14,5 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
-  }
-
-  @Post()
-  addObserver(@Body() body: ObserverDTO): IObserver {
-    const observerAdded: IObserver = this._observableService.subscribe(body);
-    this._observableService.notify('YUHU!!!'); // Immediatly notyfying when a new observer is added
-    return observerAdded;
   }
 }
