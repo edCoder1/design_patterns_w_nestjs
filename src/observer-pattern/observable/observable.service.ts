@@ -15,7 +15,7 @@ export class ObservableService implements IObservable {
   }
 
   public notify(data: string): void {
-    console.error(this.observers);
+    console.error('ok!', this.observers);
 
     this.observers.forEach((observer: IObserver) => {
       observer.update(data);
