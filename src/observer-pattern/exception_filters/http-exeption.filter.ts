@@ -14,7 +14,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
 
-    console.error('not even hitted!');
+    console.log('NOW being hitted!');
 
     response.status(status).json({
       statusCode: status,
