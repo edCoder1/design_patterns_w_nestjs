@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, UseFilters } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseFilters,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { ObservableService } from './observable/observable.service';
-import { ObserverDTO } from './observable/DTOS/Observer.dto';
-import { IObserver } from './observer/interfaces/IObserver';
+import { ObserverDTO } from './observable/dtos/Observer.dto';
+import { IObserver } from './observer/interfaces/observer.interface';
 import { HttpExceptionFilter } from './exception_filters/http-exeption.filter';
 
 @Controller('observer-pattern')
@@ -9,15 +17,20 @@ import { HttpExceptionFilter } from './exception_filters/http-exeption.filter';
 export class ObserverPatternController {
   constructor(private _observableService: ObservableService) {}
 
+  @Get()
+  async getError() {
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+  }
+
   @Post()
   addObserver(@Body() body: ObserverDTO): IObserver {
     try {
       const observerAdded: IObserver = this._observableService.subscribe(body);
-      this._observableService.notify('YUHU!!!'); // Immediatly notyfying when a new observer is added
+      this._observableService.notify(body); // Immediatly notyfying when a new observer is added
       return observerAdded;
     } catch (error) {
       console.error('=(');
-      throw new Error('=(');
+      throw new Error('=..(');
     }
   }
 }

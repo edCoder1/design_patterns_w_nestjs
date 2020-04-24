@@ -1,9 +1,9 @@
-import { IObserver } from './interfaces/IObserver';
+import { IObserver } from './interfaces/observer.interface';
 
 export class Observer implements IObserver {
-  constructor(public name: string, public description: string) {}
+  constructor(public name, public description) {}
 
-  public update(data: string): void {
-    console.error(data);
+  update(data: string) {
+    console.log(2, data);
   }
 }
