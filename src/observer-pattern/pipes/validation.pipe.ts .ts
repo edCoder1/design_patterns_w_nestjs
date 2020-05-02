@@ -10,7 +10,13 @@ import { ObjectSchema } from '@hapi/joi';
 export class JoiValidationPipe implements PipeTransform {
   constructor(private schema: ObjectSchema) {}
   transform(value: any, metadata: ArgumentMetadata) {
-    console.log('validating.....');
+    console.log(`
+    _______________________________
+    VALIDATING: 
+    value: ${JSON.stringify(value)}
+    metadata: ${JSON.stringify(metadata)}
+    ________________________________
+    `);
 
     const { error } = this.schema.validate(value);
     if (error) {
