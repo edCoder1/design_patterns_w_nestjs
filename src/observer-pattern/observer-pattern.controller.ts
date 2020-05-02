@@ -14,7 +14,7 @@ import { IObserver } from './observer/interfaces/observer.interface';
 import { HttpExceptionFilter } from './exception_filters/http-exeption.filter';
 import { Observer } from './observer/observer';
 import { JoiValidationPipe } from './pipes/validation.pipe.ts ';
-import { ObserverSchema } from './pipes/observer.schema';
+import { ObserverSchema } from './pipes/schemas/observer.schema';
 
 @Controller('observer-pattern')
 @UseFilters(HttpExceptionFilter) // Best practice to use Class instead of Instance
